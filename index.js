@@ -56,7 +56,11 @@ async function run() {
         })
 
 //booking api
-
+app.get('/booking',async(req,res)=>{
+    const query={};
+    const booking=await bookingCollection.find(query).toArray();
+    res.send(booking)
+})
 
 
 app.post('/booking',async(req,res)=>{
@@ -65,6 +69,12 @@ app.post('/booking',async(req,res)=>{
     res.send(result)
 })
 //user api 
+app.get('/user',async(req,res)=>{
+    const query={};
+    const user=await userCollection.find(query).toArray();
+    res.send(user)
+})
+
 app.post('/user',async(req,res)=>{
     const user=req.body;
     const result=await userCollection.insertOne(user);
