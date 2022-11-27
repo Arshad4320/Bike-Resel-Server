@@ -80,6 +80,19 @@ app.post('/user',async(req,res)=>{
     const result=await userCollection.insertOne(user);
     res.send(result)
 })
+// buyer api
+app.get('/user/buyer',async(req,res)=>{
+    const query = { Option:"Buyer"};
+    const result=await userCollection.find(query).toArray();
+    res.send(result)
+})
+//seller api
+app.get('/user/seller',async(req,res)=>{
+    const query = { Option:"Seller"};
+    const result=await userCollection.find(query).toArray();
+    res.send(result)
+})
+
 
     }
     finally {
