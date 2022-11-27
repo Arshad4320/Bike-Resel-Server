@@ -4,6 +4,7 @@ const port = process.env.PORT || 5000;
 require('dotenv').config();
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const { query } = require('express');
 const app = express();
 
 // middleware
@@ -129,6 +130,12 @@ async function run() {
             const query = { Option: "Seller" };
             const result = await userCollection.find(query).toArray();
             res.send(result)
+        })
+        //admin api
+        app.get('/user/admin',async(req,res)=>{
+           const  query={Option:"admin"};
+            const result=await userCollection.find(query).toArray();
+            res.send(result);
         })
 
 
