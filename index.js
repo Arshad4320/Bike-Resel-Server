@@ -83,8 +83,8 @@ async function run() {
             res.send(user)
         })
         // user admin api
-        app.get('/user/admin:email', async (req, res) => {
-            const email = req.params.email;
+        app.get('/user/admin/:email', async (req, res) => {
+            const email = req.params.Email;
             const query = { email }
             const user = await userCollection.findOne(query);
             res.send({ isAdmin: user?.Option === 'admin' });
